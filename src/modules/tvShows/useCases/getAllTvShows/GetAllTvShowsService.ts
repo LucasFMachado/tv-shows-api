@@ -9,14 +9,14 @@ import { ITvShowRepository } from "../../repositories/ITvShowRepository";
 class GetAllTvShowsService {
   constructor(
     @inject("TvShowRepository")
-    private categoryRepository: ITvShowRepository
+    private tvShowRepository: ITvShowRepository
   ) {}
 
   async execute({
     page,
     take,
   }: IPagedQueryRequest): Promise<IPagedQueryReturn<TvShow>> {
-    const tvShows = await this.categoryRepository.getAll({ page, take });
+    const tvShows = await this.tvShowRepository.getAll({ page, take });
     return tvShows;
   }
 }

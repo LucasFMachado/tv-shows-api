@@ -14,7 +14,3 @@ export const notMatchMessage = (field_name: string) =>
   `${field_name} does not match!`;
 
 export const authErrorMessage = () => "Email or password incorrect!";
-
-export const tokenMissingMessage = () => "Token missing!";
-
-export const invalidTokenMessage = () => "Invalid token!";

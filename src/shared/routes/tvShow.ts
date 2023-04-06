@@ -1,6 +1,6 @@
 import { GetAllTvShowsController } from "@modules/tvShows/useCases/getAllTvShows/GetAllTvShowsController";
-import { GetOneTvShowController } from "@modules/tvShows/useCases/getOneTvShow/GetOneCategoryController";
-import { getOneUserSchema } from "@modules/users/validations/GetOneUserSchema";
+import { GetOneTvShowController } from "@modules/tvShows/useCases/getOneTvShow/GetOneTvShowController";
+import { getOneTvShowSchema } from "@modules/tvShows/validations/GetOneTvShowSchema";
 import { ensureAuthenticated } from "@shared/middlewares/ensureAuthenticated";
 import { Router } from "express";
 
@@ -17,7 +17,7 @@ tvShowRoutes.get("/", ensureAuthenticated, getAllTvShowsController.handle);
 tvShowRoutes.get(
   "/:id",
   ensureAuthenticated,
-  validateFields(getOneUserSchema),
+  validateFields(getOneTvShowSchema),
   getOneTvShowController.handle
 );
 

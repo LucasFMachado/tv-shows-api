@@ -9,12 +9,12 @@ class GetAllTvShowsController {
 
     const getAllTvShowsService = container.resolve(GetAllTvShowsService);
 
-    const categories = await getAllTvShowsService.execute({
+    const tvShows = await getAllTvShowsService.execute({
       page: Number(page) || 0,
       take: Number(take) || 10,
     });
 
-    return response.status(200).json(categories);
+    return response.status(200).json(tvShows);
   }
 }
 
