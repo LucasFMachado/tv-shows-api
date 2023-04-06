@@ -24,9 +24,6 @@ class User {
   is_admin: boolean;
 
   @Column()
-  active: boolean;
-
-  @Column()
   delete: boolean;
 
   @CreateDateColumn()

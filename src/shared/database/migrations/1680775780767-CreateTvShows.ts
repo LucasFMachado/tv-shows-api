@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateUsers1671991985400 implements MigrationInterface {
+export class CreateTvShows1680775780767 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "users",
+        name: "tv_shows",
         columns: [
           {
             name: "id",
@@ -21,36 +21,28 @@ export class CreateUsers1671991985400 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: "email",
+            name: "genre",
             type: "varchar",
             isNullable: false,
           },
           {
-            name: "password",
+            name: "start_date",
+            type: "timestamp",
+            isNullable: false,
+          },
+          {
+            name: "end_date",
+            type: "timestamp",
+            isNullable: true,
+          },
+          {
+            name: "network",
             type: "varchar",
             isNullable: false,
           },
           {
-            name: "is_admin",
-            type: "boolean",
-            default: false,
-          },
-          {
-            name: "delete",
-            type: "boolean",
-            default: false,
-            isNullable: false,
-          },
-          {
-            name: "created_at",
-            type: "timestamp",
-            default: "now()",
-            isNullable: false,
-          },
-          {
-            name: "updated_at",
-            type: "timestamp",
-            default: "now()",
+            name: "description",
+            type: "varchar",
             isNullable: false,
           },
         ],
@@ -59,6 +51,6 @@ export class CreateUsers1671991985400 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("tv_shows");
   }
 }

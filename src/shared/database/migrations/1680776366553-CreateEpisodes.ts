@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateUsers1671991985400 implements MigrationInterface {
+export class CreateEpisodes1680776366553 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "users",
+        name: "episodes",
         columns: [
           {
             name: "id",
@@ -16,24 +16,29 @@ export class CreateUsers1671991985400 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: "season",
+            type: "int",
+            isNullable: false,
+          },
+          {
+            name: "episode",
+            type: "int",
+            isNullable: false,
+          },
+          {
             name: "name",
             type: "varchar",
             isNullable: false,
           },
           {
-            name: "email",
-            type: "varchar",
+            name: "air_date",
+            type: "timestamp",
             isNullable: false,
           },
           {
-            name: "password",
-            type: "varchar",
+            name: "tv_show_id",
+            type: "int",
             isNullable: false,
-          },
-          {
-            name: "is_admin",
-            type: "boolean",
-            default: false,
           },
           {
             name: "delete",
@@ -41,17 +46,13 @@ export class CreateUsers1671991985400 implements MigrationInterface {
             default: false,
             isNullable: false,
           },
+        ],
+        foreignKeys: [
           {
-            name: "created_at",
-            type: "timestamp",
-            default: "now()",
-            isNullable: false,
-          },
-          {
-            name: "updated_at",
-            type: "timestamp",
-            default: "now()",
-            isNullable: false,
+            name: "fk_tv_show",
+            referencedTableName: "tv_shows",
+            referencedColumnNames: ["id"],
+            columnNames: ["tv_show_id"],
           },
         ],
       })
@@ -59,6 +60,6 @@ export class CreateUsers1671991985400 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("episodes");
   }
 }

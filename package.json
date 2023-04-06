@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --poll --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli"
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "seeds": "ts-node-dev src/shared/database/seeds/admin.ts && ts-node-dev src/shared/database/seeds/tv_shows.ts && ts-node-dev src/shared/database/seeds/episodes.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

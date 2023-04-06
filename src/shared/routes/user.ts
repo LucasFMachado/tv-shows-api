@@ -3,7 +3,6 @@ import { ChangePasswordController } from "@modules/users/useCases/changePassword
 import { CreateUserController } from "@modules/users/useCases/createUser/CreateUserController";
 import { DeleteUserController } from "@modules/users/useCases/deleteUser/DeleteUserController";
 import { GetAllUsersController } from "@modules/users/useCases/getAllUsers/GetAllUsersController";
-import { GetMyUserController } from "@modules/users/useCases/getMyUser/GetMyUserController";
 import { GetOneUserController } from "@modules/users/useCases/getOneUser/GetOneUserController";
 import { UpdateUserController } from "@modules/users/useCases/updateUser/UpdateUserController";
 import { authenticateUserSchema } from "@modules/users/validations/AuthenticateUserSchema";
@@ -23,20 +22,20 @@ const updateUserController = new UpdateUserController();
 const deleteUserController = new DeleteUserController();
 const getAllUsersController = new GetAllUsersController();
 const getOneUserController = new GetOneUserController();
-const getMyUserController = new GetMyUserController();
 const changePasswordController = new ChangePasswordController();
 const authenticateUserController = new AuthenticateUserController();
 
+// Authenticate user
 userRoutes.post(
   "/authenticate",
   validateFields(authenticateUserSchema),
   authenticateUserController.handle
 );
 
+// Get all users
 userRoutes.get("/", ensureAuthenticated, getAllUsersController.handle);
 
-userRoutes.get("/me", ensureAuthenticated, getMyUserController.handle);
-
+// Get one user
 userRoutes.get(
   "/:id",
   ensureAuthenticated,
@@ -44,12 +43,14 @@ userRoutes.get(
   getOneUserController.handle
 );
 
+// Register user
 userRoutes.post(
   "/",
   validateFields(createUserSchema),
   createUserController.handle
 );
 
+// Update user
 userRoutes.put(
   "/:id",
   ensureAuthenticated,
@@ -57,6 +58,7 @@ userRoutes.put(
   updateUserController.handle
 );
 
+// Delete user
 userRoutes.delete(
   "/:id",
   ensureAuthenticated,
@@ -64,6 +66,7 @@ userRoutes.delete(
   deleteUserController.handle
 );
 
+// Change user password
 userRoutes.put(
   "/change-password/:id",
   ensureAuthenticated,
