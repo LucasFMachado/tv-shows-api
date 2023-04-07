@@ -1,9 +1,12 @@
 # tv-shows-api
 
 > In this project, an API was developed, using Node, Postgres and Docker.
+>
+> The request collection is also available for import, in the ```requests.json``` file.
+>
+> **PS:** To run the project, it is necessary to have Docker and Docker Compose for the database to be created in a container.
 
-#### To run the project, run the following commands:
-###### PS: To run the project, it is necessary to have Docker and Docker Compose for the database to be created in a container.
+### To run the project, run the following commands:
 
 1- Clone the repository: ```$ git clone /* project_repository */ ```
 
@@ -24,7 +27,9 @@
 
 5- Run the API: ```$ yarn dev```
 
-#### API requests:
+<br />
+
+### API requests:
   * **Users:**
     * Register User:
       * Method: POST
@@ -85,7 +90,9 @@
       * URL: http://localhost:3333/favorites/:tv_show_id
       > Bearer authorization token is needed.
 
-#### Technologies used in this project:
+<br />
+
+### Technologies used in this project:
 * [Node.js](https://nodejs.org)
 * [TypesCript](https://www.typescriptlang.org)
 * [Express](https://expressjs.com)
